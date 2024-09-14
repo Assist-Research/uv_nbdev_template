@@ -1,0 +1,52 @@
+repos:
+  - repo: local
+    hooks:
+      - id: nbdev-clean
+        name: nbdev-clean
+        stages: [commit]
+        language: system
+        entry: "uv run nbdev_clean"
+        types: [python]
+        pass_filenames: false
+      - id: nbdev-test
+        name: nbdev-test
+        stages: [commit]
+        language: system
+        entry: "uv run nbdev_test"
+        types: [python]
+        pass_filenames: false
+      - id: nbdev-readme
+        name: nbdev-readme
+        stages: [commit]
+        language: system
+        entry: "uv run nbdev_readme"
+        types: [python]
+        pass_filenames: false
+      - id: bandit
+        name: bandit
+        stages: [commit]
+        language: system
+        entry: "uv run bandit -r {{project_name}} -ll"
+        types: [python]
+        pass_filenames: false
+      - id: pyright
+        name: pyright
+        stages: [commit]
+        language: system
+        entry: "uv run pyright"
+        types: [python]
+        pass_filenames: false
+      - id: ruff-check
+        name: ruff-check
+        stages: [commit]
+        language: system
+        entry: "uv run ruff check . --fix"
+        types: [python]
+        pass_filenames: false
+      - id: ruff-format
+        name: ruff-format
+        stages: [commit]
+        language: system
+        entry: "uv run ruff format ."
+        types: [python]
+        pass_filenames: false

@@ -1,0 +1,73 @@
+[project]
+name = "{{project_name}}"
+version = "0.0.1"
+description = "{{short_description}}"
+license = {file = "LICENSE"}
+authors = [
+    { name = "{{author_name}}", email = "{{author_email}}" },
+]
+readme = "README.md"
+requires-python = ">={{python_min_version}}"
+dependencies = [
+]
+
+[project.urls]
+Repository = "https://github.com/{{gh_organisation}}/{{project_name}}"
+Docs = "https://{{project_name}}.netlify.app"
+
+[project.scripts]
+hello = "{{project_name}}:hello"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "bandit",
+    "black",
+    "invoke",
+    "jupyterlab",
+    "jupyterlab-quarto",
+    "nbdev",
+    "pre-commit",
+    "pyright",
+    "ruff",
+]
+
+[tool.pyright]
+include = [
+    "nbs",
+    "{{project_name}}",
+]
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.ipynb_checkpoints",
+]
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "E4",
+    "E7",
+    "E9",
+    "F",
+]
+ignore = []
+fixable = [
+    "ALL",
+]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
