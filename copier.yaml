@@ -70,6 +70,7 @@ _tasks:
   - ["git", "init"]
   - ["gh", "repo", "create", "{{gh_organisation}}/{{project_name}}", "--private", "-d", '"{{short_description}}"']
   - ["git", "remote", "add", "origin", "git@github.com:{{gh_organisation}}/{{project_name}}.git"]
+  - ["uv", "venv", "--python", "{{python_version}}"]
   - ["uv", "sync"]
   - ["uv", "run", "nbdev_install_hooks"]
   - ["uv", "run", "nbdev_prepare"]
